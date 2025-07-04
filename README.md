@@ -1,12 +1,78 @@
-# React + Vite
+# Luxor Limos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, luxurious limousine service website built with React and Vite.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Modern React components
+- Responsive design
+- Interactive booking form with validation
+- EmailJS integration for booking confirmations
+- Luxury fleet display with image zoom
+- Testimonials, FAQs, and more
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+### Prerequisites
+
+- Node.js (v18+ recommended)
+- npm or pnpm
+
+### Installation
+
+1. Clone the repository
+2. Install dependencies:
+
+   ```
+   npm install
+   ```
+
+   or
+
+   ```
+   pnpm install
+   ```
+
+3. Copy `.env.example` to `.env` and update with your EmailJS credentials:
+
+   ```
+   cp .env.example .env
+   ```
+
+4. Start the development server:
+
+   ```
+   npm run dev
+   ```
+
+   or
+
+   ```
+   pnpm dev
+   ```
+
+5. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
+
+## EmailJS Integration
+
+This project uses EmailJS for sending booking confirmation emails. To configure EmailJS:
+
+1. Sign up at [https://www.emailjs.com/](https://www.emailjs.com/)
+2. Create a new Email Service (Gmail, Outlook, etc.)
+3. Create a new Email Template (see template example below)
+4. Get your Service ID, Template ID, and Public Key
+5. Add these to your `.env` file
+
+## Building for Production
+
+```
+npm run build
+```
+
+or
+
+```
+pnpm build
+```
+
+This will create a production-ready build in the `dist` directory.

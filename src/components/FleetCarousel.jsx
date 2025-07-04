@@ -12,87 +12,121 @@ const FleetCarousel = () => {
   const fleetItems = [
     {
       image:
-        "https://www.usnews.com/object/image/00000195-4e0c-d1ab-af9f-ef4cd0f40000/24c0152-008-source.jpg?update-time=1743768737006&size=responsiveGallery",
-      name: "2025 Mercedes-Benz EQS",
-      subtitle: "Electric Luxury Sedan",
-      capacity: "2",
+        "https://sunnylimo.com/wp-content/uploads/2017/11/Lincoln-front.jpg",
+      name: "Lincoln Continental",
+      subtitle: "Executive Luxury Sedan",
+      capacity: "3",
       luggage: "2",
       description:
-        "Experience the pinnacle of electric luxury with the 2025 Mercedes-Benz EQS. This flagship electric sedan combines cutting-edge technology with exceptional comfort, perfect for executive transportation and elegant airport transfers.",
+        "The Lincoln Continental offers a perfect blend of classic American luxury and modern sophistication. Ideal for corporate executives, airport transfers, and elegant special occasions requiring comfortable travel for up to 3 passengers.",
       features: [
-        "Zero Emissions",
-        "Hyperscreen Display",
-        "Massage Seats",
-        "Ambient Lighting",
-        "Active Sound Cancellation",
+        "Bridge of Weir Leather Seats",
+        "30-Way Perfect Position Seats",
+        "Revel® Audio System",
+        "Panoramic Sunroof",
+        "Adaptive LED Headlights",
       ],
     },
     {
       image:
-        "https://www.usnews.com/object/image/0000018c-5f19-dc6c-aded-ffbd801a0000/https-cars-dms-usnews-com-static-uploads-images-auto-custom-15135-original-2023-toyota-highlander-hybrid-angular-front-1.jpg?update-time=1697143561000&size=responsiveGallery",
-      name: "2023 Toyota Highlander Hybrid",
-      subtitle: "Eco-Friendly SUV",
-      capacity: "4",
-      luggage: "4",
+        "https://sunnylimo.com/wp-content/uploads/2022/05/Mercedes-S-Class-front.jpg",
+      name: "Mercedes-Benz S-Class",
+      subtitle: "Ultimate Luxury Sedan",
+      capacity: "3",
+      luggage: "2",
       description:
-        "The perfect blend of luxury and environmental consciousness. Our Toyota Highlander Hybrid offers spacious comfort for up to 4 passengers with excellent luggage capacity while maintaining impressive fuel efficiency and reduced emissions.",
+        "Experience the epitome of luxury transportation with our Mercedes-Benz S-Class. This flagship luxury sedan offers an unparalleled combination of refinement, cutting-edge technology, and exceptional comfort for discerning clients.",
       features: [
-        "Hybrid Powertrain",
-        "Panoramic Moonroof",
-        "Three-Zone Climate Control",
-        "Premium Audio System",
-        "Advanced Safety Features",
+        "Nappa Leather Upholstery",
+        "MBUX Infotainment System",
+        "Burmester® 3D Sound",
+        "Air Balance Cabin Fragrance",
+        "ENERGIZING Comfort Control",
       ],
     },
     {
       image:
-        "https://www.shutterstock.com/image-photo/novosibirsk-russia-april-30-2024-600nw-2458866649.jpg",
-      name: "Cadillac XT6",
-      subtitle: "Premium American Luxury",
+        "https://sunnylimo.com/wp-content/uploads/2017/11/Escalade-front.jpg",
+      name: "Cadillac Escalade",
+      subtitle: "Luxury American SUV",
       capacity: "6",
       luggage: "6",
       description:
-        "The Cadillac XT6 delivers a sophisticated American luxury experience with ample space for 6 passengers. Perfect for corporate groups, family outings, and special events requiring elegant transportation with substantial luggage capacity.",
+        "The iconic Cadillac Escalade delivers sophisticated American luxury with commanding presence and exceptional comfort for up to 6 passengers. Perfect for VIP transportation, corporate groups, and special events requiring elegant spacious travel.",
       features: [
-        "Premium Leather Seating",
-        "Bose® Performance Series Audio",
-        "Night Vision Technology",
-        "USB Ports For All Passengers",
-        "Hands-Free Power Liftgate",
+        "Semi-Aniline Leather Seating",
+        "AKG™ Studio Reference Sound",
+        "38-inch OLED Curved Display",
+        "Hands-Free Super Cruise™",
+        "Magnetic Ride Control",
       ],
     },
     {
       image:
-        "https://www.dpvtransportation.com/wp-content/uploads/2020/09/TransitVans-Gallery-03.jpg",
-      name: "Ford Transit Executive",
-      subtitle: "Sophisticated Group Travel",
-      capacity: "12",
-      luggage: "12",
+        "https://sunnylimo.com/wp-content/uploads/2022/05/Suburban-front.jpg",
+      name: "Chevrolet Suburban",
+      subtitle: "Spacious Premium SUV",
+      capacity: "6",
+      luggage: "6",
       description:
-        "Our custom Ford Transit Executive provides first-class accommodations for larger groups needing both luxury and space. Ideal for airport transfers, corporate events, and wine tours with ample luggage space for extended trips.",
+        "Our Chevrolet Suburban offers generous space and premium comfort for groups up to 6 passengers with substantial luggage capacity. Ideal for airport transfers, corporate events, and family outings requiring both luxury and practicality.",
       features: [
-        "Executive Seating Configuration",
-        "Individual Reading Lights",
-        "High-Roof Design",
-        "Mobile Workspace Options",
-        "Premium Entertainment System",
+        "Leather-Appointed Seating",
+        "Tri-Zone Climate System",
+        "10.2-inch Touchscreen",
+        "Advanced Trailering System",
+        "Independent Rear Suspension",
       ],
     },
     {
       image:
-        "https://www.topgear.com/sites/default/files/2024/08/First%20Class%20Sprinter%20by%20Clive%20Sutton%20%2837%29.jpg",
+        "https://sunnylimo.com/wp-content/uploads/2017/11/Sprinter-front.jpg",
       name: "Mercedes-Benz Sprinter",
       subtitle: "First-Class Group Transport",
-      capacity: "12",
-      luggage: "12",
+      capacity: "14",
+      luggage: "8",
       description:
-        "Experience the ultimate in group transportation with our Mercedes-Benz Sprinter. This premium vehicle combines elegance and functionality with an interior designed for maximum comfort during both short commutes and long journeys.",
+        "Experience ultimate group transportation with our Mercedes-Benz Sprinter. This premium executive van combines elegance and functionality with exceptional interior space, perfect for corporate teams, wine tours, and special event transportation.",
       features: [
-        "VIP Captain's Chairs",
-        "Ambient LED Lighting",
-        "Premium Sound System",
-        "Individual Climate Controls",
-        "Enhanced Suspension System",
+        "Premium Captain's Chairs",
+        "High Roof Design",
+        "MBUX Multimedia System",
+        "Active Distance Assist",
+        "LED Performance Lighting",
+      ],
+    },
+    {
+      image:
+        "https://sunnylimo.com/wp-content/uploads/2022/06/Minibus-front.jpg",
+      name: "Executive Minibus",
+      subtitle: "Premium Group Transportation",
+      capacity: "38",
+      luggage: "16",
+      description:
+        "Our Executive Minibus offers first-class accommodations for larger groups of up to 38 passengers. Perfect for corporate events, shuttle services, and special occasions requiring comfortable transportation with significant luggage capacity.",
+      features: [
+        "Reclining Plush Seats",
+        "Individual Air Controls",
+        "Integrated A/V System",
+        "Onboard Restroom",
+        "Luggage Compartments",
+      ],
+    },
+    {
+      image:
+        "https://sunnylimo.com/wp-content/uploads/2022/04/Executive-Coach-front-2.jpg",
+      name: "Executive Coach",
+      subtitle: "Luxury Large Group Travel",
+      capacity: "56",
+      luggage: "30",
+      description:
+        "The Executive Coach represents the pinnacle of large group luxury transportation, accommodating up to 56 passengers with extensive luggage capacity. Ideal for corporate events, tours, weddings, and any occasion requiring comfortable travel for large groups.",
+      features: [
+        "Premium Ergonomic Seating",
+        "Individual Power Outlets",
+        "DVD/Media Entertainment",
+        "Onboard Lavatory",
+        "Undercarriage Storage Bays",
       ],
     },
   ];
@@ -317,7 +351,7 @@ const FleetCarousel = () => {
               {fleetItems[currentSlide].description}
             </p>
 
-            <div className="mb-8">
+            {/* <div className="mb-8">
               <h4 className="font-bold mb-3 flex items-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -344,7 +378,7 @@ const FleetCarousel = () => {
                   </span>
                 ))}
               </div>
-            </div>
+            </div> */}
 
             <div className="flex justify-center md:justify-start">
               <button
@@ -426,7 +460,7 @@ const FleetCarousel = () => {
         ))}
       </div>
 
-      <div className="hidden lg:grid grid-cols-5 gap-4 mt-6">
+      <div className="hidden lg:grid grid-cols-7 gap-3 mt-6">
         {fleetItems.map((item, index) => (
           <div
             key={index}
@@ -490,7 +524,7 @@ const FleetCarousel = () => {
         ))}
       </div>
 
-      <div className="hidden md:flex absolute bottom-4 right-4 bg-[#1c2331]/90 backdrop-blur-sm text-white text-xs px-4 py-2 rounded-md border-l-2 border-[#c8a97e] shadow-md items-center">
+      {/* <div className="hidden md:flex absolute bottom-4 right-4 bg-[#1c2331]/90 backdrop-blur-sm text-white text-xs px-4 py-2 rounded-md border-l-2 border-[#c8a97e] shadow-md items-center">
         <svg
           className="h-3 w-3 text-[#c8a97e] mr-1"
           viewBox="0 0 24 24"
@@ -508,7 +542,7 @@ const FleetCarousel = () => {
           Vehicle <span className="text-[#c8a97e]">{currentSlide + 1}</span> of{" "}
           {fleetItems.length}
         </span>
-      </div>
+      </div> */}
 
       {isZoomModalOpen && (
         <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 backdrop-blur-sm">

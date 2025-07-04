@@ -3,6 +3,62 @@ import React from "react";
 const AboutSection = () => (
   <section id="about" className="py-24 bg-white">
     <div className="container mx-auto px-4">
+      <div className="bg-gradient-to-r from-[#1c2331] to-[#2c3e50] rounded-xl shadow-2xl mb-20 overflow-hidden">
+        <div className="grid md:grid-cols-5">
+          <div className="md:col-span-3 p-8 md:p-12">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
+              <span className="text-[#c8a97e]">Worldwide</span> Luxury
+              Transportation Services
+            </h2>
+            <div className="w-24 h-1 bg-[#c8a97e] mb-6"></div>
+            <p className="text-lg md:text-xl text-gray-200 mb-6">
+              Luxora Limo offers premium limousine services worldwide, ensuring
+              luxury and comfort wherever you travel. Experience first-class
+              rides for events, business, and more — anytime, anywhere.
+            </p>
+            <div className="flex flex-wrap gap-4 mb-6">
+              <div className="bg-[#c8a97e]/10 px-4 py-2 rounded-full border border-[#c8a97e]/30">
+                <span className="text-[#c8a97e] font-medium">
+                  North America
+                </span>
+              </div>
+              <div className="bg-[#c8a97e]/10 px-4 py-2 rounded-full border border-[#c8a97e]/30">
+                <span className="text-[#c8a97e] font-medium">
+                  South America
+                </span>
+              </div>
+              <div className="bg-[#c8a97e]/10 px-4 py-2 rounded-full border border-[#c8a97e]/30">
+                <span className="text-[#c8a97e] font-medium">Europe</span>
+              </div>
+              <div className="bg-[#c8a97e]/10 px-4 py-2 rounded-full border border-[#c8a97e]/30">
+                <span className="text-[#c8a97e] font-medium">Asia</span>
+              </div>
+              <div className="bg-[#c8a97e]/10 px-4 py-2 rounded-full border border-[#c8a97e]/30">
+                <span className="text-[#c8a97e] font-medium">Middle East</span>
+              </div>
+              <div className="bg-[#c8a97e]/10 px-4 py-2 rounded-full border border-[#c8a97e]/30">
+                <span className="text-[#c8a97e] font-medium">Australia</span>
+              </div>
+            </div>
+            <a
+              href="#book"
+              className="inline-block bg-[#c8a97e] hover:bg-[#b89d75] text-white font-medium px-6 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg"
+            >
+              Book Global Service
+            </a>
+          </div>
+          <div className="md:col-span-2 hidden md:block">
+            <div
+              className="h-full bg-cover bg-center"
+              style={{
+                backgroundImage:
+                  "url('https://images.unsplash.com/photo-1566396223859-91e1165fae12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
+              }}
+            ></div>
+          </div>
+        </div>
+      </div>
+
       <div className="text-center mb-16">
         <div className="inline-block mb-2 bg-[#c8a97e]/10 px-1 py-1 text-xs text-[#c8a97e] uppercase tracking-wider font-semibold rounded-md">
           Our Story
