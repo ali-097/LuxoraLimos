@@ -3,8 +3,7 @@ import React, { useEffect, useState } from "react";
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
 
-  const heroImage =
-    "https://luxoralimo.com/wp-content/uploads/2025/04/Luxora-Limo-10-limousine-companies-in-staten-island-1024x574.webp";
+  const heroImage = "./hero-bg.webp";
 
   useEffect(() => {
     setIsVisible(true);

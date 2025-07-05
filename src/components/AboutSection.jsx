@@ -78,7 +78,8 @@ const AboutSection = () => (
           <div className="relative">
             <div className="absolute -top-8 -left-8 w-24 h-24 border-2 border-[#c8a97e] z-0 hidden md:block"></div>
             <img
-              src="https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              // src="https://images.unsplash.com/photo-1511207538754-e8555f2bc187?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+              src="./about-img.jpeg"
               alt="Luxurious limousine"
               className="rounded-lg shadow-xl object-cover h-180 w-full relative z-10"
             />
