@@ -4,14 +4,13 @@ import emailjs from "@emailjs/browser";
 const BookingForm = () => {
   const [bookingStep, setBookingStep] = useState(1);
   const [formData, setFormData] = useState({
-    firstName: "",
-    lastName: "",
+    name: "",
     email: "",
     phone: "",
 
-    serviceType: "",
     vehicleType: "",
     passengers: "",
+    luggage: "",
 
     pickupDate: "",
     pickupTime: "",
@@ -43,36 +42,6 @@ const BookingForm = () => {
     const { name, value } = e.target;
     let newValue = value;
 
-    if (name === "vehicleType" && formData.passengers) {
-      const maxCapacity = vehicleCapacities[value] || 0;
-      if (parseInt(formData.passengers) > maxCapacity) {
-        setErrors({
-          ...errors,
-          passengers: `This vehicle can only accommodate up to ${maxCapacity} passengers.`,
-        });
-      } else {
-        setErrors({
-          ...errors,
-          passengers: "",
-        });
-      }
-    }
-
-    if (name === "passengers" && formData.vehicleType) {
-      const maxCapacity = vehicleCapacities[formData.vehicleType] || 0;
-      if (parseInt(value) > maxCapacity) {
-        setErrors({
-          ...errors,
-          passengers: `This vehicle can only accommodate up to ${maxCapacity} passengers.`,
-        });
-      } else {
-        setErrors({
-          ...errors,
-          passengers: "",
-        });
-      }
-    }
-
     if (name === "phone") {
       newValue = value.replace(/\D/g, "");
 
@@ -103,13 +72,8 @@ const BookingForm = () => {
 
     switch (step) {
       case 1:
-        if (!formData.firstName.trim()) {
-          stepErrors.firstName = "First name is required";
-          isValid = false;
-        }
-
-        if (!formData.lastName.trim()) {
-          stepErrors.lastName = "Last name is required";
+        if (!formData.name.trim()) {
+          stepErrors.name = "Name is required";
           isValid = false;
         }
 
@@ -131,11 +95,6 @@ const BookingForm = () => {
         break;
 
       case 2:
-        if (!formData.serviceType) {
-          stepErrors.serviceType = "Please select a service type";
-          isValid = false;
-        }
-
         if (!formData.vehicleType) {
           stepErrors.vehicleType = "Please select a vehicle type";
           isValid = false;
@@ -149,12 +108,17 @@ const BookingForm = () => {
           if (isNaN(passengers) || passengers < 1) {
             stepErrors.passengers = "Please enter a valid passenger count";
             isValid = false;
-          } else if (formData.vehicleType) {
-            const maxCapacity = vehicleCapacities[formData.vehicleType];
-            if (passengers > maxCapacity) {
-              stepErrors.passengers = `This vehicle can only accommodate up to ${maxCapacity} passengers`;
-              isValid = false;
-            }
+          }
+        }
+
+        if (!formData.luggage) {
+          stepErrors.luggage = "Number of luggage pieces is required";
+          isValid = false;
+        } else {
+          const luggage = parseInt(formData.luggage);
+          if (isNaN(luggage) || luggage < 0) {
+            stepErrors.luggage = "Please enter a valid luggage count";
+            isValid = false;
           }
         }
         break;
@@ -244,19 +208,6 @@ const BookingForm = () => {
     return vehicleMap[vehicleValue] || vehicleValue;
   };
 
-  const getServiceFullName = (serviceValue) => {
-    const serviceMap = {
-      airport: "Airport Transfer",
-      hourly: "Hourly Service",
-      pointToPoint: "Point to Point Transfer",
-      wedding: "Wedding Service",
-      specialEvent: "Special Event",
-      corporate: "Corporate Service",
-    };
-
-    return serviceMap[serviceValue] || serviceValue;
-  };
-
   const generateBookingReference = () => {
     const timestamp = new Date().getTime().toString().slice(-6);
     return `LUX-${timestamp}`;
@@ -274,45 +225,50 @@ const BookingForm = () => {
 
     const bookingReference = generateBookingReference();
 
-    const templateParams = {
+    const adminTemplateParams = {
       booking_ref: bookingReference,
-      to_name: `${formData.firstName} ${formData.lastName}`,
-      to_email: formData.email,
-      from_name: "Luxor Limos",
-      customer_name: `${formData.firstName} ${formData.lastName}`,
+      to_email: "bngamer55@gmail.com",
+      to_name: "Luxor Limos Admin",
+      from_name: "Luxor Limos Booking System",
+      customer_name: formData.name,
       customer_email: formData.email,
       customer_phone: formData.phone,
-      service_type: getServiceFullName(formData.serviceType),
       vehicle_type: getVehicleFullName(formData.vehicleType),
       passengers: formData.passengers,
+      luggage: formData.luggage,
       pickup_date: formatDate(formData.pickupDate),
       pickup_time: formatTime(formData.pickupTime),
       pickup_location: formData.pickupLocation,
       dropoff_location: formData.dropoffLocation,
       special_requests: formData.specialRequests || "None specified",
       promo_code: formData.promoCode || "None applied",
+      system_date: new Date().toLocaleString(),
     };
 
     emailjs
       .send(
         import.meta.env.VITE_EMAILJS_SERVICE_ID,
         import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        templateParams,
+        adminTemplateParams,
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(
-        (result) => {
-          console.log("Email sent successfully:", result.text);
-          setSubmitSuccess(true);
-          setBookingStep(5);
+        (adminResult) => {
+          console.log(
+            "Admin notification email sent successfully:",
+            adminResult.text
+          );
 
           setFormData({
             ...formData,
             bookingReference: bookingReference,
           });
+
+          setSubmitSuccess(true);
+          setBookingStep(5);
         },
         (error) => {
-          console.error("Error sending email:", error.text);
+          console.error("Error sending admin notification email:", error.text);
           setSubmitError(
             "Failed to send booking request. Please try again or contact us directly."
           );
@@ -331,45 +287,24 @@ const BookingForm = () => {
             <h3 className="text-2xl font-bold mb-6 text-gray-800 border-b border-gray-200 pb-3">
               Personal Information
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  First Name*
-                </label>
-                <input
-                  type="text"
-                  name="firstName"
-                  value={formData.firstName}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 border ${
-                    errors.firstName ? "border-red-300" : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors`}
-                  required
-                />
-                {errors.firstName && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.firstName}
-                  </p>
-                )}
-              </div>
-              <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Last Name*
-                </label>
-                <input
-                  type="text"
-                  name="lastName"
-                  value={formData.lastName}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 border ${
-                    errors.lastName ? "border-red-300" : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors`}
-                  required
-                />
-                {errors.lastName && (
-                  <p className="text-red-500 text-sm mt-1">{errors.lastName}</p>
-                )}
-              </div>
+            <div className="mb-4">
+              <label className="block text-gray-700 font-medium mb-1">
+                Full Name*
+              </label>
+              <input
+                type="text"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+                placeholder="Enter your full name"
+                className={`w-full px-4 py-3 border ${
+                  errors.name ? "border-red-300" : "border-gray-300"
+                } rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors`}
+                required
+              />
+              {errors.name && (
+                <p className="text-red-500 text-sm mt-1">{errors.name}</p>
+              )}
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
               <div>
@@ -427,34 +362,7 @@ const BookingForm = () => {
             <h3 className="text-2xl font-bold mb-6 text-gray-800 border-b border-gray-200 pb-3">
               Trip Details
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
-              <div>
-                <label className="block text-gray-700 font-medium mb-1">
-                  Service Type*
-                </label>
-                <select
-                  name="serviceType"
-                  value={formData.serviceType}
-                  onChange={handleChange}
-                  className={`w-full px-4 py-3 border ${
-                    errors.serviceType ? "border-red-300" : "border-gray-300"
-                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 bg-white transition-colors appearance-none`}
-                  required
-                >
-                  <option value="">Select Service Type</option>
-                  <option value="airport">Airport Transfer</option>
-                  <option value="hourly">Hourly Service</option>
-                  <option value="pointToPoint">Point to Point Transfer</option>
-                  <option value="wedding">Wedding Service</option>
-                  <option value="specialEvent">Special Event</option>
-                  <option value="corporate">Corporate Service</option>
-                </select>
-                {errors.serviceType && (
-                  <p className="text-red-500 text-sm mt-1">
-                    {errors.serviceType}
-                  </p>
-                )}
-              </div>
+            <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 mb-4">
               <div>
                 <label className="block text-gray-700 font-medium mb-1">
                   Vehicle Type*
@@ -498,30 +406,47 @@ const BookingForm = () => {
                 )}
               </div>
             </div>
-            <div className="mb-4">
-              <label className="block text-gray-700 font-medium mb-1">
-                Number of Passengers*
-              </label>
-              <input
-                type="number"
-                name="passengers"
-                value={formData.passengers}
-                onChange={handleChange}
-                min="1"
-                className={`w-full px-4 py-3 border ${
-                  errors.passengers ? "border-red-300" : "border-gray-300"
-                } rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors`}
-                required
-              />
-              {errors.passengers && (
-                <p className="text-red-500 text-sm mt-1">{errors.passengers}</p>
-              )}
-              {formData.vehicleType && formData.passengers && (
-                <p className="text-sm text-gray-600 mt-1">
-                  Max capacity for {getVehicleFullName(formData.vehicleType)}:{" "}
-                  {vehicleCapacities[formData.vehicleType]} passengers
-                </p>
-              )}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Number of Passengers*
+                </label>
+                <input
+                  type="number"
+                  name="passengers"
+                  value={formData.passengers}
+                  onChange={handleChange}
+                  min="1"
+                  className={`w-full px-4 py-3 border ${
+                    errors.passengers ? "border-red-300" : "border-gray-300"
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors`}
+                  required
+                />
+                {errors.passengers && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.passengers}
+                  </p>
+                )}
+              </div>
+              <div>
+                <label className="block text-gray-700 font-medium mb-1">
+                  Number of Luggage*
+                </label>
+                <input
+                  type="number"
+                  name="luggage"
+                  value={formData.luggage}
+                  onChange={handleChange}
+                  min="0"
+                  className={`w-full px-4 py-3 border ${
+                    errors.luggage ? "border-red-300" : "border-gray-300"
+                  } rounded-lg focus:outline-none focus:ring-2 focus:ring-amber-500 focus:border-amber-500 transition-colors`}
+                  required
+                />
+                {errors.luggage && (
+                  <p className="text-red-500 text-sm mt-1">{errors.luggage}</p>
+                )}
+              </div>
             </div>
             <div className="flex justify-between mt-6">
               <button
@@ -664,15 +589,7 @@ const BookingForm = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
                 <div className="flex justify-between">
                   <span className="text-gray-600">Name:</span>
-                  <span className="font-medium">
-                    {formData.firstName} {formData.lastName}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="text-gray-600">Service:</span>
-                  <span className="font-medium">
-                    {getServiceFullName(formData.serviceType)}
-                  </span>
+                  <span className="font-medium">{formData.name}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Vehicle:</span>
@@ -683,6 +600,10 @@ const BookingForm = () => {
                 <div className="flex justify-between">
                   <span className="text-gray-600">Passengers:</span>
                   <span className="font-medium">{formData.passengers}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Luggage:</span>
+                  <span className="font-medium">{formData.luggage}</span>
                 </div>
                 <div className="flex justify-between">
                   <span className="text-gray-600">Pickup:</span>
@@ -726,18 +647,10 @@ const BookingForm = () => {
             </div>
 
             {/* Hidden fields for EmailJS */}
-            <input
-              type="hidden"
-              name="to_name"
-              value={`${formData.firstName} ${formData.lastName}`}
-            />
+            <input type="hidden" name="to_name" value={formData.name} />
             <input type="hidden" name="to_email" value={formData.email} />
             <input type="hidden" name="customer_phone" value={formData.phone} />
-            <input
-              type="hidden"
-              name="service_type"
-              value={getServiceFullName(formData.serviceType)}
-            />
+            <input type="hidden" name="luggage" value={formData.luggage} />
             <input
               type="hidden"
               name="vehicle_type"
@@ -856,7 +769,7 @@ const BookingForm = () => {
                 <div className="flex justify-between border-b border-gray-200 py-2">
                   <span className="text-gray-600">Name:</span>
                   <span className="font-medium text-gray-800">
-                    {formData.firstName} {formData.lastName}
+                    {formData.name}
                   </span>
                 </div>
                 <div className="flex justify-between border-b border-gray-200 py-2">
@@ -866,9 +779,9 @@ const BookingForm = () => {
                   </span>
                 </div>
                 <div className="flex justify-between border-b border-gray-200 py-2">
-                  <span className="text-gray-600">Service:</span>
+                  <span className="text-gray-600">Vehicle:</span>
                   <span className="font-medium text-gray-800">
-                    {getServiceFullName(formData.serviceType)}
+                    {getVehicleFullName(formData.vehicleType)}
                   </span>
                 </div>
                 <div className="flex justify-between py-2">
@@ -890,7 +803,26 @@ const BookingForm = () => {
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <button
                 type="button"
-                onClick={() => setBookingStep(1)}
+                onClick={() => {
+                  setFormData({
+                    name: "",
+                    email: "",
+                    phone: "",
+                    vehicleType: "",
+                    passengers: "",
+                    luggage: "",
+                    pickupDate: "",
+                    pickupTime: "",
+                    pickupLocation: "",
+                    dropoffLocation: "",
+                    specialRequests: "",
+                    promoCode: "",
+                  });
+                  setBookingStep(1);
+                  setErrors({});
+                  setSubmitError("");
+                  setSubmitSuccess(false);
+                }}
                 className="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors"
               >
                 Book Another Ride

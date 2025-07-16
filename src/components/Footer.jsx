@@ -1,20 +1,74 @@
 import React, { useState } from "react";
+import emailjs from "@emailjs/browser";
 
 const Footer = () => {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [newsletterError, setNewsletterError] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubscribe = (e) => {
     e.preventDefault();
-    if (email && email.includes("@")) {
-      console.log("Subscribing email:", email);
-      setSubscribed(true);
-      setEmail("");
 
-      setTimeout(() => {
-        setSubscribed(false);
-      }, 5000);
+    if (!email.trim()) {
+      setNewsletterError("Email is required");
+      return;
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      setNewsletterError("Email is invalid");
+      return;
     }
+
+    setNewsletterError("");
+    setIsSubmitting(true);
+
+    const htmlContent = `
+      <div style="font-family: Arial, sans-serif; line-height: 1.6;">
+        <h2 style="color: #1c2331; border-bottom: 2px solid #c8a97e; padding-bottom: 10px;">New Newsletter Subscription</h2>
+        <p><strong>Email:</strong> ${email}</p>
+        <p style="font-size: 12px; color: #666; margin-top: 30px;">This email was added to the newsletter subscription list from the Luxor Limos website footer.</p>
+      </div>
+    `;
+
+    const templateParams = {
+      to_email: "info@luxoralimos.com",
+      to_name: "Luxor Limos Admin",
+      from_name: "Luxor Limos Website",
+      from_email: email,
+      subject: "New Newsletter Subscription",
+      message_html: htmlContent,
+      type: "newsletter",
+    };
+
+    emailjs
+      .send(
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_SHARED_TEMPLATE_ID,
+        templateParams,
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log(
+            "Newsletter subscription email sent successfully:",
+            result.text
+          );
+          setSubscribed(true);
+          setEmail("");
+          setIsSubmitting(false);
+
+          setTimeout(() => {
+            setSubscribed(false);
+          }, 5000);
+        },
+        (error) => {
+          console.error(
+            "Error sending newsletter subscription email:",
+            error.text
+          );
+          setNewsletterError("Failed to subscribe. Please try again.");
+          setIsSubmitting(false);
+        }
+      );
   };
 
   return (
@@ -46,7 +100,8 @@ const Footer = () => {
             </p>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/share/1FKZuDLxca/"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-[var(--color-primary-dark)] hover:bg-[var(--color-primary)] flex items-center justify-center transition-all duration-300"
                 aria-label="Facebook"
               >
@@ -58,7 +113,7 @@ const Footer = () => {
                   <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z" />
                 </svg>
               </a>
-              <a
+              {/* <a
                 href="#"
                 className="w-10 h-10 rounded-full bg-[var(--color-primary-dark)] hover:bg-[var(--color-primary)] flex items-center justify-center transition-all duration-300"
                 aria-label="Twitter"
@@ -70,9 +125,10 @@ const Footer = () => {
                 >
                   <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                 </svg>
-              </a>
+              </a> */}
               <a
-                href="#"
+                href="https://www.instagram.com/luxoralimos"
+                target="_blank"
                 className="w-10 h-10 rounded-full bg-[var(--color-primary-dark)] hover:bg-[var(--color-primary)] flex items-center justify-center transition-all duration-300"
                 aria-label="Instagram"
               >
@@ -238,9 +294,7 @@ const Footer = () => {
                   />
                 </svg>
                 <span className="text-gray-300">
-                  123 Luxury Lane,
-                  <br />
-                  New York, NY 10001
+                  1942 Broadway Ste 314C # 76189
                 </span>
               </li>
               <li className="flex items-center">
@@ -258,7 +312,7 @@ const Footer = () => {
                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                   />
                 </svg>
-                <span className="text-gray-300">(123) 456-7890</span>
+                <span className="text-gray-300">(917) 924-6101</span>
               </li>
               <li className="flex items-center">
                 <svg
@@ -309,8 +363,15 @@ const Footer = () => {
                     type="email"
                     placeholder="Your email address"
                     value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    className="py-2 px-3 text-gray-800 bg-white/90 border-2 border-[var(--color-primary)]/20 focus:border-[var(--color-primary)] outline-none flex-grow rounded-l-md text-sm"
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      if (newsletterError) setNewsletterError("");
+                    }}
+                    className={`py-2 px-3 text-gray-800 bg-white/90 border-2 ${
+                      newsletterError
+                        ? "border-red-500"
+                        : "border-[var(--color-primary)]/20"
+                    } focus:border-[var(--color-primary)] outline-none flex-grow rounded-l-md text-sm`}
                     required
                     aria-label="Email for newsletter"
                   />
@@ -318,10 +379,42 @@ const Footer = () => {
                     type="submit"
                     className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-dark)] text-white px-3 py-2 font-medium transition-colors duration-300 rounded-r-md text-sm whitespace-nowrap"
                     aria-label="Subscribe to newsletter"
+                    disabled={isSubmitting}
                   >
-                    Subscribe
+                    {isSubmitting ? (
+                      <span className="flex items-center">
+                        <svg
+                          className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
+                          xmlns="http://www.w3.org/2000/svg"
+                          fill="none"
+                          viewBox="0 0 24 24"
+                        >
+                          <circle
+                            className="opacity-25"
+                            cx="12"
+                            cy="12"
+                            r="10"
+                            stroke="currentColor"
+                            strokeWidth="4"
+                          ></circle>
+                          <path
+                            className="opacity-75"
+                            fill="currentColor"
+                            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                          ></path>
+                        </svg>
+                        Sending
+                      </span>
+                    ) : (
+                      "Subscribe"
+                    )}
                   </button>
                 </div>
+                {newsletterError && (
+                  <div className="mt-2 text-sm text-red-400">
+                    {newsletterError}
+                  </div>
+                )}
                 {subscribed && (
                   <div className="mt-2 text-sm text-green-400 animate-pulse">
                     Thank you for subscribing!
