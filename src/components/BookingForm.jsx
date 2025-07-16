@@ -227,7 +227,7 @@ const BookingForm = () => {
 
     const adminTemplateParams = {
       booking_ref: bookingReference,
-      to_email: "bngamer55@gmail.com",
+      to_email: "info@luxoralimos.com",
       to_name: "Luxor Limos Admin",
       from_name: "Luxor Limos Booking System",
       customer_name: formData.name,
