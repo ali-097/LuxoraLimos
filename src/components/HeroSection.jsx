@@ -33,7 +33,7 @@ const HeroSection = () => {
           }}
         >
           <div className="inline-block mb-4 bg-[#c8a97e] px-3 py-1 text-xs uppercase tracking-wider font-semibold text-white">
-            Luxury Transportation Since 2010
+            Luxury Transportation Since 2015
           </div>
 
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">

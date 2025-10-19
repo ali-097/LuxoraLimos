@@ -4,19 +4,19 @@ const AboutSection = () => (
   <section id="about" className="py-24 bg-white">
     <div className="container mx-auto px-4">
       <div className="bg-gradient-to-r from-[#1c2331] to-[#2c3e50] rounded-xl shadow-2xl mb-20 overflow-hidden">
-        <div className="grid md:grid-cols-5">
-          <div className="md:col-span-3 p-8 md:p-12">
+        <div className="grid md:grid-cols-3 gap-8 p-8 md:p-12">
+          <div className="md:col-span-2">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4 leading-tight">
               <span className="text-[#c8a97e]">Worldwide</span> Luxury
               Transportation Services
             </h2>
             <div className="w-24 h-1 bg-[#c8a97e] mb-6"></div>
-            <p className="text-lg md:text-xl text-gray-200 mb-6">
+            <p className="text-lg md:text-xl text-gray-200 mb-6 leading-relaxed">
               Luxora Limo offers premium limousine services worldwide, ensuring
               luxury and comfort wherever you travel. Experience first-class
               rides for events, business, and more — anytime, anywhere.
             </p>
-            <div className="flex flex-wrap gap-4 mb-6">
+            <div className="flex flex-wrap gap-4 mb-8">
               <div className="bg-[#c8a97e]/10 px-4 py-2 rounded-full border border-[#c8a97e]/30">
                 <span className="text-[#c8a97e] font-medium">
                   North America
@@ -40,21 +40,86 @@ const AboutSection = () => (
                 <span className="text-[#c8a97e] font-medium">Australia</span>
               </div>
             </div>
-            <a
-              href="#book"
-              className="inline-block bg-[#c8a97e] hover:bg-[#b89d75] text-white font-medium px-6 py-3 rounded-lg transition-all transform hover:scale-105 shadow-lg"
-            >
-              Book Global Service
-            </a>
           </div>
-          <div className="md:col-span-2 hidden md:block">
-            <div
-              className="h-full bg-cover bg-center"
-              style={{
-                backgroundImage:
-                  "url('https://images.unsplash.com/photo-1566396223859-91e1165fae12?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')",
-              }}
-            ></div>
+
+          <div className="md:col-span-1">
+            <div className="bg-gradient-to-br from-amber-50/95 to-orange-50/95 backdrop-blur-md rounded-2xl border-2 border-[#c8a97e]/40 p-6 shadow-2xl hover:shadow-3xl transition-all duration-500 hover:-translate-y-1">
+              <div className="flex justify-center mb-6">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#c8a97e] to-[#a38147] rounded-2xl flex items-center justify-center shadow-lg">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-8 w-8 text-white"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                    />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                    />
+                  </svg>
+                </div>
+              </div>
+
+              <div className="text-center mb-4">
+                <h3 className="text-lg font-bold text-[#1c2331] mb-1">
+                  <span className="text-[#c8a97e]">Tristate Area</span>
+                </h3>
+                <p className="text-sm font-medium text-gray-600">
+                  Luxury Transportation Services
+                </p>
+              </div>
+              <p className="text-sm text-gray-700 mb-6 leading-relaxed text-center">
+                Premium luxury transportation services covering the tristate
+                area and beyond.
+              </p>
+
+              <div className="flex flex-wrap gap-2 justify-center">
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
+                    Manhattan
+                  </span>
+                </div>
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
+                    Brooklyn
+                  </span>
+                </div>
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
+                    Queens
+                  </span>
+                </div>
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
+                    Long Island
+                  </span>
+                </div>
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
+                    Westchester
+                  </span>
+                </div>
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
+                    North Jersey
+                  </span>
+                </div>
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
+                    Fairfield County (CT)
+                  </span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -68,7 +133,7 @@ const AboutSection = () => (
         </h2>
         <div className="w-20 h-1 bg-[#c8a97e] mx-auto mb-8"></div>
         <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-          For over 15 years, we've been setting the standard for luxury
+          For over 10 years, we've been setting the standard for luxury
           transportation in New York and beyond.
         </p>
       </div>
@@ -89,12 +154,12 @@ const AboutSection = () => (
 
         <div className="p-4 lg:p-8">
           <h3 className="text-2xl font-bold mb-6 text-[#1c2331]">
-            Premier Limousine Services Since 2010
+            Premier Limousine Services Since 2015
           </h3>
           <p className="text-lg mb-6 leading-relaxed text-gray-700">
             Welcome to Luxora Limos — the premier limousine service provider
             across the globe. With a fleet of over 200 luxury limousines, we
-            have been offering top-notch transportation services since 2010,
+            have been offering top-notch transportation services since 2015,
             catering to all your travel needs.
           </p>
 
@@ -230,10 +295,10 @@ const AboutSection = () => (
               />
             </svg>
           </div>
-          <h3 className="text-3xl font-bold mb-2 text-[#1c2331]">15</h3>
+          <h3 className="text-3xl font-bold mb-2 text-[#1c2331]">10</h3>
           <p className="text-lg font-medium mb-1">Years Experience</p>
           <p className="text-gray-500 text-center">
-            Providing exceptional limousine services since 2010
+            Providing exceptional limousine services since 2015
           </p>
         </div>
 
