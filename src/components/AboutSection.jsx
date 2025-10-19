@@ -85,6 +85,11 @@ const AboutSection = () => (
               <div className="flex flex-wrap gap-2 justify-center">
                 <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
                   <span className="text-[#1c2331] font-medium text-xs">
+                    Bronx
+                  </span>
+                </div>
+                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
+                  <span className="text-[#1c2331] font-medium text-xs">
                     Manhattan
                   </span>
                 </div>
@@ -100,22 +105,17 @@ const AboutSection = () => (
                 </div>
                 <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
                   <span className="text-[#1c2331] font-medium text-xs">
-                    Long Island
+                    Staten Island
                   </span>
                 </div>
                 <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
                   <span className="text-[#1c2331] font-medium text-xs">
-                    Westchester
+                    New Jersey
                   </span>
                 </div>
                 <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
                   <span className="text-[#1c2331] font-medium text-xs">
-                    North Jersey
-                  </span>
-                </div>
-                <div className="bg-[#c8a97e]/20 px-3 py-1.5 rounded-full border border-[#c8a97e]/40">
-                  <span className="text-[#1c2331] font-medium text-xs">
-                    Fairfield County (CT)
+                    Connecticut
                   </span>
                 </div>
               </div>
@@ -158,9 +158,9 @@ const AboutSection = () => (
           </h3>
           <p className="text-lg mb-6 leading-relaxed text-gray-700">
             Welcome to Luxora Limos — the premier limousine service provider
-            across the globe. With a fleet of over 200 luxury limousines, we
-            have been offering top-notch transportation services since 2015,
-            catering to all your travel needs.
+            across the globe. With a large fleet of luxury limousines, we have
+            been offering top-notch transportation services since 2015, catering
+            to all your travel needs.
           </p>
 
           <div className="mb-8">

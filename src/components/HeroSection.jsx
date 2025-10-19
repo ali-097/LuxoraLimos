@@ -42,8 +42,8 @@ const HeroSection = () => {
           </h1>
 
           <p className="text-xl md:text-2xl mb-10 max-w-2xl text-gray-100 leading-relaxed">
-            Premium limousine services for all your travel needs. With a fleet
-            of over 200 luxury vehicles, we provide unparalleled comfort and
+            Premium limousine services for all your travel needs. With a large
+            fleet of luxury vehicles, we provide unparalleled comfort and
             elegance.
           </p>
 
