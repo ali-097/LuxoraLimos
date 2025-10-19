@@ -1,4 +1,5 @@
 import React, { useState, useRef } from "react";
+import { Link } from "react-router-dom";
 import emailjs from "@emailjs/browser";
 
 const ContactSection = () => {
@@ -451,8 +452,8 @@ const ContactSection = () => {
             availability have made Luxora Limos a leading name in luxury
             transportation across the United States.
           </p>
-          <a
-            href="#book"
+          <Link
+            to="/book"
             className="bg-[#c8a97e] hover:bg-[#a38147] text-white px-10 py-4 rounded-md font-semibold transition-all duration-300 shadow-lg hover:shadow-xl inline-flex items-center"
           >
             <svg
@@ -468,7 +469,7 @@ const ContactSection = () => {
               />
             </svg>
             Book Your Limousine Today
-          </a>
+          </Link>
         </div>
       </div>
     </section>

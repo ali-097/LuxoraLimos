@@ -186,11 +186,11 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#book"
+                  href="#testimonial"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
-                  Book Now
+                  Testimonials
                 </a>
               </li>
               <li>

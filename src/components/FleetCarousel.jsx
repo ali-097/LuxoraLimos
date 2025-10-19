@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 
 const FleetCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -381,9 +382,9 @@ const FleetCarousel = () => {
             </div> */}
 
             <div className="flex justify-center md:justify-start">
-              <button
+              <Link
                 className="bg-[#c8a97e] hover:bg-[#a38147] text-white px-8 py-3 rounded-md transition-all duration-300 font-medium flex items-center shadow-md hover:shadow-lg"
-                onClick={() => (window.location.href = "#book")}
+                to="/book"
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -398,7 +399,7 @@ const FleetCarousel = () => {
                   />
                 </svg>
                 Book This Vehicle
-              </button>
+              </Link>
             </div>
           </div>
         </div>
