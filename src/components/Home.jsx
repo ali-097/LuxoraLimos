@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import NavBar from "./NavBar";
 import HeroSection from "./HeroSection";
 import FleetCarousel from "./FleetCarousel";
@@ -10,6 +11,23 @@ import Footer from "./Footer";
 import CallButton from "./Call";
 
 const Home = () => {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const element = document.getElementById(hash.substring(1));
+      if (element) {
+        setTimeout(() => {
+          const offsetTop =
+            element.getBoundingClientRect().top + window.pageYOffset;
+          window.scrollTo({
+            top: offsetTop - 90,
+            behavior: "smooth",
+          });
+        }, 100);
+      }
+    }
+  }, []);
+
   return (
     <>
       <NavBar />

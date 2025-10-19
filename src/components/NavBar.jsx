@@ -7,12 +7,12 @@ const NavBar = () => {
 
   const navItems = [
     { name: "Home", link: "/" },
-    { name: "About", link: "#about" },
-    { name: "Fleet", link: "#fleet" },
-    { name: "Why Us", link: "#why-us" },
-    { name: "Testimonials", link: "#testimonial" },
-    { name: "FAQ", link: "#faq" },
-    { name: "Contact", link: "#contact" },
+    { name: "About", link: "/#about" },
+    { name: "Fleet", link: "/#fleet" },
+    { name: "Why Us", link: "/#why-us" },
+    { name: "Testimonials", link: "/#testimonial" },
+    { name: "FAQ", link: "/#faq" },
+    { name: "Contact", link: "/#contact" },
   ];
 
   useEffect(() => {
@@ -78,16 +78,7 @@ const NavBar = () => {
                   if (item.link === "/") {
                     window.location.href = "/";
                   } else {
-                    const element = document.querySelector(item.link);
-                    if (element) {
-                      const offsetTop =
-                        element.getBoundingClientRect().top +
-                        window.pageYOffset;
-                      window.scrollTo({
-                        top: offsetTop - 90,
-                        behavior: "smooth",
-                      });
-                    }
+                    window.location.href = item.link;
                   }
                 }}
               >
@@ -160,16 +151,7 @@ const NavBar = () => {
                     if (item.link === "/") {
                       window.location.href = "/";
                     } else {
-                      const element = document.querySelector(item.link);
-                      if (element) {
-                        const offsetTop =
-                          element.getBoundingClientRect().top +
-                          window.pageYOffset;
-                        window.scrollTo({
-                          top: offsetTop - 80,
-                          behavior: "smooth",
-                        });
-                      }
+                      window.location.href = item.link;
                     }
                   }}
                 >

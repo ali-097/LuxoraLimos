@@ -150,7 +150,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#home"
+                  href="/#home"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -159,7 +159,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#about"
+                  href="/#about"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -168,7 +168,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#fleet"
+                  href="/#fleet"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -177,7 +177,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#why-us"
+                  href="/#why-us"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -186,7 +186,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#testimonial"
+                  href="/#testimonial"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -195,7 +195,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#contact"
+                  href="/#contact"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -212,7 +212,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li>
                 <a
-                  href="#fleet"
+                  href="/#fleet"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -221,7 +221,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#fleet"
+                  href="/#fleet"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -230,7 +230,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#fleet"
+                  href="/#fleet"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -239,7 +239,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#fleet"
+                  href="/#fleet"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -248,7 +248,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#fleet"
+                  href="/#fleet"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
@@ -257,7 +257,7 @@ const Footer = () => {
               </li>
               <li>
                 <a
-                  href="#fleet"
+                  href="/#fleet"
                   className="text-gray-300 hover:text-[var(--color-primary)] transition-colors duration-300 flex items-center"
                 >
                   <span className="text-[var(--color-primary)] mr-2">›</span>
