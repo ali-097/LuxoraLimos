@@ -6,11 +6,11 @@ const NavBar = () => {
   const [activeSection, setActiveSection] = useState("home");
 
   const navItems = [
-    { name: "Home", link: "#home" },
+    { name: "Home", link: "/" },
     { name: "About", link: "#about" },
     { name: "Fleet", link: "#fleet" },
     { name: "Why Us", link: "#why-us" },
-    { name: "Book Now", link: "#book" },
+    { name: "Testimonials", link: "#testimonial" },
     { name: "FAQ", link: "#faq" },
     { name: "Contact", link: "#contact" },
   ];
@@ -75,14 +75,19 @@ const NavBar = () => {
                 } text-sm uppercase tracking-wider py-2 transition-all duration-300`}
                 onClick={(e) => {
                   e.preventDefault();
-                  const element = document.querySelector(item.link);
-                  if (element) {
-                    const offsetTop =
-                      element.getBoundingClientRect().top + window.pageYOffset;
-                    window.scrollTo({
-                      top: offsetTop - 90,
-                      behavior: "smooth",
-                    });
+                  if (item.link === "/") {
+                    window.location.href = "/";
+                  } else {
+                    const element = document.querySelector(item.link);
+                    if (element) {
+                      const offsetTop =
+                        element.getBoundingClientRect().top +
+                        window.pageYOffset;
+                      window.scrollTo({
+                        top: offsetTop - 90,
+                        behavior: "smooth",
+                      });
+                    }
                   }
                 }}
               >
@@ -92,26 +97,10 @@ const NavBar = () => {
           })}
 
           <a
-            href="tel:+19179246101"
-            className={`flex items-center ${
-              scrolled ? "text-[#c8a97e]" : "text-[#c8a97e]"
-            }`}
+            href="/book"
+            className="bg-[#c8a97e] text-white px-6 py-2 rounded-lg hover:bg-[#b8947a] transition-all duration-300 font-medium shadow-md hover:shadow-lg transform hover:-translate-y-0.5"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-5 w-5 mr-2"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-              />
-            </svg>
-            <span className="font-medium">(917) 924-6101</span>
+            Book Now
           </a>
         </div>
 
@@ -168,15 +157,19 @@ const NavBar = () => {
                   onClick={(e) => {
                     e.preventDefault();
                     setIsMenuOpen(false);
-                    const element = document.querySelector(item.link);
-                    if (element) {
-                      const offsetTop =
-                        element.getBoundingClientRect().top +
-                        window.pageYOffset;
-                      window.scrollTo({
-                        top: offsetTop - 80, // Offset for fixed header
-                        behavior: "smooth",
-                      });
+                    if (item.link === "/") {
+                      window.location.href = "/";
+                    } else {
+                      const element = document.querySelector(item.link);
+                      if (element) {
+                        const offsetTop =
+                          element.getBoundingClientRect().top +
+                          window.pageYOffset;
+                        window.scrollTo({
+                          top: offsetTop - 80,
+                          behavior: "smooth",
+                        });
+                      }
                     }
                   }}
                 >
@@ -184,28 +177,13 @@ const NavBar = () => {
                 </a>
               );
             })}
-
             <a
-              href="tel:+19179246101"
-              className="flex items-center text-[#c8a97e] py-4 border-b border-gray-200 mt-2"
+              href="/book"
+              className="bg-[#c8a97e] text-white px-6 py-3 rounded-lg hover:bg-[#b8947a] transition-all duration-300 font-medium shadow-md hover:shadow-lg text-center mt-4"
+              onClick={() => setIsMenuOpen(false)}
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 mr-3"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                />
-              </svg>
-              <span className="font-medium">(917) 924-6101</span>
-            </a>
-
+              Book Now
+            </a>{" "}
             <div className="mt-auto py-6 text-center text-sm text-gray-500">
               <p>© {new Date().getFullYear()} Luxora Limos</p>
               <p className="mt-1">Premium Transportation Services</p>

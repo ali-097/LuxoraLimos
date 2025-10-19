@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -47,8 +48,8 @@ const HeroSection = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-5">
-            <a
-              href="#book"
+            <Link
+              to="/book"
               className="bg-[#c8a97e] text-white px-8 py-4 text-lg font-semibold rounded-md hover:bg-[#a38147] transition-all duration-300 text-center shadow-lg flex items-center justify-center"
             >
               <span>Book Now</span>
@@ -64,7 +65,7 @@ const HeroSection = () => {
                   clipRule="evenodd"
                 />
               </svg>
-            </a>
+            </Link>
             <a
               href="#fleet"
               className="border-2 border-white text-white px-8 py-4 text-lg font-semibold rounded-md hover:bg-white hover:text-[#1c2331] transition-all duration-300 text-center"
