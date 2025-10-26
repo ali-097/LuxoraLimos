@@ -219,8 +219,7 @@ const FleetCarousel = () => {
   return (
     <div className="relative w-full max-w-6xl mx-auto mt-12">
       <div className="absolute -top-4 left-0 bg-[#1c2331] text-white px-4 py-2 text-sm uppercase tracking-wider font-medium z-10">
-        <span className="text-[#c8a97e]">{fleetItems.length}</span> Luxury
-        Vehicles
+        Luxury Vehicles
       </div>
 
       <div className="overflow-hidden rounded-lg shadow-2xl border border-gray-200">
